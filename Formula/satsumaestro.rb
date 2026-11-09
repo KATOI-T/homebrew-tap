@@ -3,8 +3,8 @@ class Satsumaestro < Formula
 
   desc "Agentic coding CLI that also runs on local LLMs"
   homepage "https://github.com/KATOI-T/SATSUMAESTRO"
-  url "https://files.pythonhosted.org/packages/0b/0e/bd267b0e941425b6c28f678ff454432cdf2f86c5e5df2cff100b15cfe909/satsumaestro-0.5.0.tar.gz"
-  sha256 "a2630e40588fb763efb768b08658539bbfcb45581efcf36027b9ae51413279b0"
+  url "https://files.pythonhosted.org/packages/38/1f/c2c77026456dce99a99ab83d574bfd319fab77cdfff2eca47aa0a00becc0/satsumaestro-0.5.1.tar.gz"
+  sha256 "00d0efa9db05effe7a6ea879bb11ffc1ca7080336be83ae91ecb43b7a92d218d"
   license "Apache-2.0"
 
   depends_on "rust" => :build # for jiter
@@ -98,8 +98,8 @@ class Satsumaestro < Formula
   end
 
   resource "mcp" do
-    url "https://files.pythonhosted.org/packages/6e/77/9450b8f251a13affb6281997d0523c4615f8a8b35d0b21ff30db3a5aac9d/mcp-1.28.1.tar.gz"
-    sha256 "d51e36a5f5644faea4f85ea649bfffa6bc6c26770d42798ad6a3de3d2ba69683"
+    url "https://files.pythonhosted.org/packages/ba/93/0142dc84a666daf8ad51a34268f34c12fd6fda4f3810c4be2504eecc8212/mcp-1.30.0.tar.gz"
+    sha256 "445414625fce5c295faa505bb11bacece661ab6f4028d57c935db57820b7a3e4"
   end
 
   resource "mdurl" do
@@ -133,8 +133,8 @@ class Satsumaestro < Formula
   end
 
   resource "pyjwt" do
-    url "https://files.pythonhosted.org/packages/3b/81/58d0ac84e1ef3a3843791d6954d94c0b33d526c75eeb1efbce9d0a4c4077/pyjwt-2.13.0.tar.gz"
-    sha256 "41571c89ca91598c79e8ef18a2d07367d4810fbbd6f637794879baf1b7703423"
+    url "https://files.pythonhosted.org/packages/43/ea/5194e52748b0da83d71e082d75496eaec6e58f419f5e184786ded517e6a9/pyjwt-2.15.1.tar.gz"
+    sha256 "4f259e80cdfb6b3fc18a7de51fd1ef9ec79652f25019bae68975ca2468a34df8"
   end
 
   resource "python-dotenv" do
