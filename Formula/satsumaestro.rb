@@ -3,8 +3,8 @@ class Satsumaestro < Formula
 
   desc "Agentic coding CLI that also runs on local LLMs"
   homepage "https://github.com/KATOI-T/SATSUMAESTRO"
-  url "https://files.pythonhosted.org/packages/38/1f/c2c77026456dce99a99ab83d574bfd319fab77cdfff2eca47aa0a00becc0/satsumaestro-0.5.1.tar.gz"
-  sha256 "00d0efa9db05effe7a6ea879bb11ffc1ca7080336be83ae91ecb43b7a92d218d"
+  url "https://files.pythonhosted.org/packages/1a/27/ce60f08fd26763ea75fd3012f53dd1e5e4b20f6cc61d84ec9326c88b3b1b/satsumaestro-0.5.2.tar.gz"
+  sha256 "0636ca6a79135cd1bd5a02256dd5e42091c82164f048a8fd2730dcbbd0b6b6f7"
   license "Apache-2.0"
 
   depends_on "rust" => :build # for jiter
