@@ -8,7 +8,8 @@ on:
         description: Pull request number
         required: true
       head_sha:
-        description: Expected pull request head commit SHA (optional)
+        description: Expected pull request head commit SHA
+        required: true
 
 permissions: {}
 
@@ -59,7 +60,31 @@ jobs:
         with:
           subject-path: "${{ steps.pull_bottles.outputs.bottle_path }}/*.tar.gz"
 
+      # Only admins can update main here, so the commits go to the pull request's branch and an admin merges it.
+      # The branch is replaced, so stop if it moved since the bottles were built.
+      - name: Find the pull request branch
+        id: pr_branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_SHA: ${{ inputs.head_sha }}
+          PULL_REQUEST: ${{ inputs.pull_request }}
+        run: |
+          read -r head_oid cross_repo branch < <(
+            gh pr view "$PULL_REQUEST" --repo "$GITHUB_REPOSITORY" \
+              --json headRefOid,isCrossRepository,headRefName \
+              --jq '"\(.headRefOid) \(.isCrossRepository) \(.headRefName)"'
+          )
+          if [[ "$cross_repo" != "false" || "$head_oid" != "$HEAD_SHA" ]]
+          then
+            echo "::error::Pull request #$PULL_REQUEST must come from this repository and still be at $HEAD_SHA."
+            exit 1
+          fi
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+
       - name: Push commits
         uses: Homebrew/actions/git-try-push@63a2d4d8d4193eab3e62b1b782ff3ab8408f5b29 # 2026.11.09.1
         with:
           branch: main
+          remote_branch: ${{ steps.pr_branch.outputs.branch }}
+          force: true
+          no_lease: true
