@@ -246,6 +246,22 @@ class Satsumaestro < Formula
     PYTHON
   end
 
+  # pip installs the packages without bytecode, and macOS checks each new native library on its first load.
+  # Do both here, so the first start after an install or upgrade does not wait for them.
+  post_install_steps do
+    run "bin/python", base: :libexec, args: ["-m", "compileall", "-q", "{{libexec}}/lib"]
+    on_macos do
+      run "bin/python", base: :libexec, args: ["-c", <<~PYTHON, "{{libexec}}/lib"]
+        import contextlib, ctypes, pathlib, sys
+
+        for path in pathlib.Path(sys.argv[1]).rglob("*"):
+            if path.suffix in (".so", ".dylib"):
+                with contextlib.suppress(OSError):
+                    ctypes.CDLL(str(path))
+      PYTHON
+    end
+  end
+
   test do
     assert_match version.to_s, shell_output("#{bin}/satsumaestro --version")
     assert_match version.to_s, shell_output("#{bin}/satsuma --version")
