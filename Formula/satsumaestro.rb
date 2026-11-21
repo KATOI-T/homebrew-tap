@@ -7,6 +7,13 @@ class Satsumaestro < Formula
   sha256 "0636ca6a79135cd1bd5a02256dd5e42091c82164f048a8fd2730dcbbd0b6b6f7"
   license "Apache-2.0"
 
+  bottle do
+    root_url "https://github.com/KATOI-T/homebrew-tap/releases/download/satsumaestro-0.5.2"
+    rebuild 1
+    sha256 cellar: :any, arm64_tahoe:   "1266ee9d13458d19b8db4d6357956dae37daccce2df7f2bb1b33acfe0d246fc7"
+    sha256 cellar: :any, arm64_sequoia: "5310f15d37faf234566aa3d4b4020e8d09dc71f32368aa7f112031707d0b1485"
+  end
+
   depends_on "rust" => :build # for jiter
   depends_on "certifi" => :no_linkage
   depends_on "cryptography" => :no_linkage
@@ -246,7 +253,8 @@ class Satsumaestro < Formula
     PYTHON
   end
 
-  # pip installs the packages without bytecode, and macOS checks each new native library on its first load.
+  # pip installs the packages without bytecode, and bottles leave it out too.
+  # macOS also checks each new native library on its first load.
   # Do both here, so the first start after an install or upgrade does not wait for them.
   post_install_steps do
     run "bin/python", base: :libexec, args: ["-m", "compileall", "-q", "{{libexec}}/lib"]
