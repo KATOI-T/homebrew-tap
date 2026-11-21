@@ -246,7 +246,8 @@ class Satsumaestro < Formula
     PYTHON
   end
 
-  # pip installs the packages without bytecode, and macOS checks each new native library on its first load.
+  # pip installs the packages without bytecode, and bottles leave it out too.
+  # macOS also checks each new native library on its first load.
   # Do both here, so the first start after an install or upgrade does not wait for them.
   post_install_steps do
     run "bin/python", base: :libexec, args: ["-m", "compileall", "-q", "{{libexec}}/lib"]
