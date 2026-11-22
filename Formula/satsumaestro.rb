@@ -7,6 +7,12 @@ class Satsumaestro < Formula
   sha256 "ba8b2d91a7a95cbd1820381d19d297215097b75c91fe4cb1102a38d27e46f95d"
   license "Apache-2.0"
 
+  bottle do
+    root_url "https://github.com/KATOI-T/homebrew-tap/releases/download/satsumaestro-0.5.3"
+    sha256 cellar: :any, arm64_tahoe:   "56ecdbf3fff23d77e921430cac86541ac9458d9f836d691efb4ca0b048b48631"
+    sha256 cellar: :any, arm64_sequoia: "0e0d333639fafccde3c926046a63fc87b1cbe4b46f5afa6340a97982e54c9f19"
+  end
+
   depends_on "rust" => :build # for jiter
   depends_on "certifi" => :no_linkage
   depends_on "cryptography" => :no_linkage
