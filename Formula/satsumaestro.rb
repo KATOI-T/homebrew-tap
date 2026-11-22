@@ -3,15 +3,14 @@ class Satsumaestro < Formula
 
   desc "Agentic coding CLI that also runs on local LLMs"
   homepage "https://github.com/KATOI-T/SATSUMAESTRO"
-  url "https://files.pythonhosted.org/packages/1a/27/ce60f08fd26763ea75fd3012f53dd1e5e4b20f6cc61d84ec9326c88b3b1b/satsumaestro-0.5.2.tar.gz"
-  sha256 "0636ca6a79135cd1bd5a02256dd5e42091c82164f048a8fd2730dcbbd0b6b6f7"
+  url "https://files.pythonhosted.org/packages/97/14/fdd0494090d5166e99f21f20e0d77a5a0d6f207302601845717312ad4cdf/satsumaestro-0.5.3.tar.gz"
+  sha256 "ba8b2d91a7a95cbd1820381d19d297215097b75c91fe4cb1102a38d27e46f95d"
   license "Apache-2.0"
 
   bottle do
-    root_url "https://github.com/KATOI-T/homebrew-tap/releases/download/satsumaestro-0.5.2"
-    rebuild 1
-    sha256 cellar: :any, arm64_tahoe:   "1266ee9d13458d19b8db4d6357956dae37daccce2df7f2bb1b33acfe0d246fc7"
-    sha256 cellar: :any, arm64_sequoia: "5310f15d37faf234566aa3d4b4020e8d09dc71f32368aa7f112031707d0b1485"
+    root_url "https://github.com/KATOI-T/homebrew-tap/releases/download/satsumaestro-0.5.3"
+    sha256 cellar: :any, arm64_tahoe:   "56ecdbf3fff23d77e921430cac86541ac9458d9f836d691efb4ca0b048b48631"
+    sha256 cellar: :any, arm64_sequoia: "0e0d333639fafccde3c926046a63fc87b1cbe4b46f5afa6340a97982e54c9f19"
   end
 
   depends_on "rust" => :build # for jiter
